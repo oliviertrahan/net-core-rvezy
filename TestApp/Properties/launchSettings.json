@@ -29,7 +29,7 @@
     "Docker": {
       "commandName": "Docker",
       "launchBrowser": true,
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/weather_forecast",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/listing",
       "publishAllPorts": true,
       "useSSL": true
     }

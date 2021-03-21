@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TestApp.Repository;
+using TestApp.Service;
 
 namespace TestApp
 {
@@ -29,9 +30,10 @@ namespace TestApp
         {
             services.AddControllers();
             services.AddDbContext<DataContext>(
-                //options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection")
-                options => options.UseSqlServer("Server=172.29.253.75,1433; Database=tempdb; User Id=SA; Password=Password#1; MultipleActiveResultSets=true")
+                options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection")
+                //options => options.UseSqlServer("Server=172.21.225.144,1433; Database=tempdb; User Id=SA; Password=Password#1; MultipleActiveResultSets=true")
             );
+            services.AddScoped<ListingService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

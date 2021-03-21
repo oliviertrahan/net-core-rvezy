@@ -1,0 +1,76 @@
+{
+	"info": {
+		"_postman_id": "a98be6dc-90e8-4be9-bb71-fbd552fc9692",
+		"name": "TestApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{test_app_url}}/listing",
+					"host": [
+						"{{test_app_url}}"
+					],
+					"path": [
+						"listing"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\" : \"f1a2116e-295e-4ace-b13b-93d49cb2210f\",\r\n    \"summary\" : \"It was pretty hot that day\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{test_app_url}}/listing",
+					"host": [
+						"{{test_app_url}}"
+					],
+					"path": [
+						"listing"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{test_app_url}}/listing/754fb465-b6b3-4d53-806c-e1f6dad3263b",
+					"host": [
+						"{{test_app_url}}"
+					],
+					"path": [
+						"listing",
+						"754fb465-b6b3-4d53-806c-e1f6dad3263b"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

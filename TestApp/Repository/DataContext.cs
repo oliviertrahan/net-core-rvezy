@@ -1,14 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using TestApp.Entity;
 
 namespace TestApp.Repository
 {
     public class DataContext : DbContext
     {
-        public DbSet<WeatherForecast> WeatherForecasts { get; set; }
+        public DbSet<Listing> Listings { get; set; }
+        public DbSet<Calendar> Calendars { get; set; }
+        public DbSet<Review> Reviews { get; set; }
 
         public DataContext(DbContextOptions<DataContext> options)
         : base(options)
