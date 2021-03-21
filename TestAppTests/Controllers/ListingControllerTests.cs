@@ -1,19 +1,30 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestApp.Controllers;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using TestApp.Entity;
 using TestApp.Service;
 using System.Linq;
+using TestApp.Repository;
+using Microsoft.EntityFrameworkCore;
 
 namespace TestApp.Controllers.Tests
 {
     [TestClass()]
     public class ListingControllerTests
     {
+        private ListingService _listingService;
+        private ListingController _listingController;
 
-        private readonly ListingService _listingService;
+        private DbContextOptions<DataContext> _dbContextOptions = new DbContextOptionsBuilder<DataContext>()
+            .UseInMemoryDatabase("tempdb")
+            .Options;
+
+        public void Setup()
+        {
+            var dataContext = new DataContext(_dbContextOptions);
+            _listingService = new ListingService(dataContext);
+            _listingController = new ListingController(_listingService);
+        }
 
         private int GetRandomId()
         {
@@ -24,6 +35,7 @@ namespace TestApp.Controllers.Tests
         [TestMethod()]
         public void GetAllTest()
         {
+            Setup();
             var id = GetRandomId();
             var listing = new Listing
             {
@@ -38,6 +50,7 @@ namespace TestApp.Controllers.Tests
         [TestMethod()]
         public void GetAllPropertyTypeFiltersOutTest()
         {
+            Setup();
             var id = GetRandomId();
             var listing = new Listing
             {
@@ -53,6 +66,7 @@ namespace TestApp.Controllers.Tests
         [TestMethod()]
         public void GetAllPropertyTypeFiltersInTest()
         {
+            Setup();
             var id = GetRandomId();
             var listing = new Listing
             {
@@ -68,6 +82,7 @@ namespace TestApp.Controllers.Tests
         [TestMethod()]
         public void GetByIdTest()
         {
+            Setup();
             var id = GetRandomId();
             var listing = new Listing
             {
@@ -82,6 +97,7 @@ namespace TestApp.Controllers.Tests
         [TestMethod()]
         public void CreateTest()
         {
+            Setup();
             var id = GetRandomId();
             var listing = new Listing
             {

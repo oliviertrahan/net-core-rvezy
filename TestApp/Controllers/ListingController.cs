@@ -15,14 +15,11 @@ namespace TestApp.Controllers
     [Route("listing")]
     public class ListingController : ControllerBase
     {
-        private readonly ILogger<ListingController> _logger;
         private readonly ListingService _listingService;
 
         public ListingController(
-            ILogger<ListingController> logger,
             ListingService listingService)
         {
-            _logger = logger;
             _listingService = listingService;
         }
 
